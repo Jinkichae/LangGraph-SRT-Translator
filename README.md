@@ -1,9 +1,3 @@
-<<<<<<< HEAD
-# LangGraph-
-LangChain과 LangGraph를 활용하여 빌더 패턴과 책임 연쇄 패턴을 적용해서 프로덕션 환경에 적합한 자막 번역 시스템입니다.
-=======
-아래는 요청하신 LangGraph Subtitle Translator 프로젝트 소개 글의 한글 번역입니다:
-
 # LangGraph 자막 번역기
 
 LangChain과 LangGraph를 활용하여 **빌더 패턴**과 **책임 연쇄 패턴**을 적용한 리팩터링된, 프로덕션 환경에 적합한 자막 번역 시스템입니다.
