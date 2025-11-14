@@ -1,6 +1,6 @@
 # LangGraph Subtitle Translator
 
-한국어 자막을 여러 언어로 자동 번역하는 시스템으로, LangChain과 LangGraph를 활용하여 구축되었습니다. **Layered Architecture**를 적용하여 유지보수성과 확장성을 극대화했습니다.
+한국어 자막을 여러 언어로 자동 번역하는 시스템으로, LangChain과 LangGraph를 활용하여 구축하였습니다. 번역 가능한 언어는 LLM이 번역가능한 언어 대부분이며 각 LLM 마다 번역 품질과 성능이 상이하게 나타나는 것을 확인했습니다. **Layered Architecture**를 적용하여 유지보수성과 확장성을 극대화했습니다.
 
 ## 🏗️ Architecture
 
@@ -363,8 +363,7 @@ class CustomHandler(TranslationHandler):
 Apache License 2.0
 
 ## 👥 저자
-
-LangGraph Translator Team
+채진기 (fbg6455@naver.com)
 
 ## 🙏 감사의 말
 
