@@ -1,4 +1,7 @@
-"""Subtitle management following SRP (Single Responsibility Principle)."""
+"""Subtitle repository - Infrastructure layer for subtitle data access.
+
+This is part of the Infrastructure Layer following layered architecture.
+"""
 
 import copy
 import threading
@@ -6,10 +9,10 @@ from typing import Dict, List, Optional
 import pysrt
 import logging
 
-from utils.path_manager import PathManager
+from common.utils.path_manager import PathManager
 
 
-class SubtitleManager:
+class SubtitleRepository:
     """
     Manages subtitle files for multiple languages.
     Responsibilities:

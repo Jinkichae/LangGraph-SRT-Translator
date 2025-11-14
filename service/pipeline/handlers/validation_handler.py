@@ -1,7 +1,7 @@
 """Validation handler - Step 1: Request validation."""
 
-from handlers.base_handler import TranslationHandler
-from core.translation_request import TranslationRequest
+from service.pipeline.handlers.base_handler import TranslationHandler
+from domain.models.translation_request import TranslationRequest
 
 
 class ValidationHandler(TranslationHandler):

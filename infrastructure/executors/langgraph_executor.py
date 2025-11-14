@@ -1,18 +1,22 @@
-"""Translation executor using LangChain and LangGraph."""
+"""LangGraph executor - Infrastructure layer for translation execution.
+
+This is part of the Infrastructure Layer following layered architecture.
+Uses LangChain and LangGraph to execute translations.
+"""
 
 import asyncio
 import logging
 from typing import Dict, Tuple, Optional, List
 
 from langchain_groq import ChatGroq
-from langchain.tools import StructuredTool
+from langchain_core.tools import StructuredTool
 from langgraph.prebuilt import create_react_agent
 
-from config.constants import AppConstants
-from config.settings import SettingsManager
+from common.config.constants import AppConstants
+from common.config.settings import SettingsManager
 
 
-class TranslationExecutor:
+class LangGraphExecutor:
     """
     Executes translation using LangChain agent.
     Responsibilities:

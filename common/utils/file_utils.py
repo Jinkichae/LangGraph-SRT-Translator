@@ -4,7 +4,7 @@ import os
 import json
 from typing import Any, Dict, List, Optional
 
-from config.constants import AppConstants
+from common.config.constants import AppConstants
 
 
 class FileUtils:

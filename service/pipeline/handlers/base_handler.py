@@ -3,7 +3,7 @@
 from abc import ABC, abstractmethod
 from typing import Optional
 
-from core.translation_request import TranslationRequest
+from domain.models.translation_request import TranslationRequest
 
 
 class TranslationHandler(ABC):

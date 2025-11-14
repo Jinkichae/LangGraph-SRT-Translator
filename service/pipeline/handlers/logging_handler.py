@@ -3,8 +3,8 @@
 import logging
 from typing import Optional
 
-from handlers.base_handler import TranslationHandler
-from core.translation_request import TranslationRequest
+from service.pipeline.handlers.base_handler import TranslationHandler
+from domain.models.translation_request import TranslationRequest
 
 
 class LoggingHandler(TranslationHandler):

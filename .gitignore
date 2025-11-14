@@ -41,6 +41,11 @@ env/
 *.txt
 *.json
 !requirements.txt
+!README.md
+!MIGRATION_GUIDE.md
+
+# Backup directories
+_backup_old_structure/
 
 # OS
 .DS_Store

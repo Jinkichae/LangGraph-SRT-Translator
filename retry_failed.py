@@ -1,40 +1,46 @@
-"""Retry failed translations manually."""
+"""Retry failed translations - DEPRECATED
 
-import os
-from pathlib import Path
-from dotenv import load_dotenv
+⚠️  DEPRECATED: This file is kept for backward compatibility only.
 
-from config.settings import SettingsManager
-from main import TranslationOrchestrator
+The project has been refactored to use Layered Architecture.
+Please use the new entry point instead:
 
+    python -m presentation.cli.retry_failed
 
-def main():
-    """Manually retry failed items."""
-    # Load environment variables
-    env_path = Path(__file__).parent / ".env"
-    load_dotenv(dotenv_path=env_path)
+Or:
+    cd presentation/cli
+    python retry_failed.py
 
-    # Get configuration
-    groq_api_key = os.getenv("GROQ_API_KEY")
-    lang_codes_str = os.getenv("LANG_CODES", "ja")
-    srt_dir = os.getenv("SRT_DIR", r"C:\langgraph_translater\a_channel\b_content")
+This file will redirect to the new entry point.
+"""
 
-    # Create settings
-    settings = SettingsManager(
-        groq_api_key=groq_api_key,
-        lang_codes_str=lang_codes_str,
-        srt_dir=srt_dir,
-    )
+import sys
 
-    # Create orchestrator
-    orchestrator = TranslationOrchestrator(settings)
+# Redirect to new structure
+print("=" * 80)
+print("WARNING: DEPRECATED ENTRY POINT")
+print("=" * 80)
+print("This retry_failed.py is deprecated. The project has been refactored")
+print("to use Layered Architecture.")
+print("")
+print("Please use the new entry point:")
+print("  python -m presentation.cli.retry_failed")
+print("")
+print("Or navigate to the CLI directory:")
+print("  cd presentation/cli")
+print("  python retry_failed.py")
+print("=" * 80)
+print("")
+print("Redirecting to new entry point...\n")
 
-    # Retry failed items (max 5 attempts per item)
-    print("Searching for failed items and retrying...")
-    orchestrator.manual_retry_failed(max_retries=5)
+# Import and run from new location
+try:
+    from presentation.cli.retry_failed import main
 
-    print("\nRetry completed!")
-
-
-if __name__ == "__main__":
-    main()
+    if __name__ == "__main__":
+        main()
+except ImportError as e:
+    print(f"Error: Failed to import new entry point: {e}")
+    print("\nPlease ensure you are in the correct directory:")
+    print("  C:\\langgraph_translater\\langgraph_translator")
+    sys.exit(1)

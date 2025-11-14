@@ -3,9 +3,9 @@
 import logging
 from typing import Optional
 
-from handlers.base_handler import TranslationHandler
-from core.translation_request import TranslationRequest
-from core.subtitle_manager import SubtitleManager
+from service.pipeline.handlers.base_handler import TranslationHandler
+from domain.models.translation_request import TranslationRequest
+from infrastructure.repositories.subtitle_repository import SubtitleRepository
 
 
 class PersistenceHandler(TranslationHandler):
@@ -16,18 +16,18 @@ class PersistenceHandler(TranslationHandler):
 
     def __init__(
         self,
-        subtitle_manager: SubtitleManager,
+        subtitle_repository: SubtitleRepository,
         logger: Optional[logging.Logger] = None,
     ):
         """
         Initialize persistence handler.
 
         Args:
-            subtitle_manager: Subtitle manager instance
+            subtitle_repository: Subtitle repository instance
             logger: Logger instance
         """
         super().__init__()
-        self.subtitle_manager = subtitle_manager
+        self.subtitle_repository = subtitle_repository
         self.logger = logger or logging.getLogger(__name__)
 
     def handle(self, request: TranslationRequest) -> TranslationRequest:
@@ -48,7 +48,7 @@ class PersistenceHandler(TranslationHandler):
                     continue
 
                 try:
-                    success = self.subtitle_manager.update_text(
+                    success = self.subtitle_repository.update_text(
                         request.index, lang_code, text
                     )
                     if not success:

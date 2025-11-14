@@ -4,9 +4,9 @@ import time
 import logging
 from typing import Optional
 
-from handlers.base_handler import TranslationHandler
-from core.translation_request import TranslationRequest
-from core.translation_executor import TranslationExecutor
+from service.pipeline.handlers.base_handler import TranslationHandler
+from domain.models.translation_request import TranslationRequest
+from infrastructure.executors.langgraph_executor import LangGraphExecutor
 
 
 class ExecutionHandler(TranslationHandler):
@@ -17,7 +17,7 @@ class ExecutionHandler(TranslationHandler):
 
     def __init__(
         self,
-        executor: TranslationExecutor,
+        executor: LangGraphExecutor,
         max_attempts: int = 3,
         logger: Optional[logging.Logger] = None,
     ):

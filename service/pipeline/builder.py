@@ -3,14 +3,14 @@
 import logging
 from typing import Optional
 
-from handlers.base_handler import TranslationHandler
-from handlers.validation_handler import ValidationHandler
-from handlers.execution_handler import ExecutionHandler
-from handlers.persistence_handler import PersistenceHandler
-from handlers.logging_handler import LoggingHandler
+from service.pipeline.handlers.base_handler import TranslationHandler
+from service.pipeline.handlers.validation_handler import ValidationHandler
+from service.pipeline.handlers.execution_handler import ExecutionHandler
+from service.pipeline.handlers.persistence_handler import PersistenceHandler
+from service.pipeline.handlers.logging_handler import LoggingHandler
 
-from core.translation_executor import TranslationExecutor
-from core.subtitle_manager import SubtitleManager
+from infrastructure.executors.langgraph_executor import LangGraphExecutor
+from infrastructure.repositories.subtitle_repository import SubtitleRepository
 
 
 class TranslationPipelineBuilder:
@@ -35,7 +35,7 @@ class TranslationPipelineBuilder:
 
     def add_execution(
         self,
-        executor: TranslationExecutor,
+        executor: LangGraphExecutor,
         max_attempts: int = 3,
         logger: Optional[logging.Logger] = None,
     ) -> "TranslationPipelineBuilder":
@@ -55,20 +55,20 @@ class TranslationPipelineBuilder:
 
     def add_persistence(
         self,
-        subtitle_manager: SubtitleManager,
+        subtitle_repository: SubtitleRepository,
         logger: Optional[logging.Logger] = None,
     ) -> "TranslationPipelineBuilder":
         """
         Add persistence handler to pipeline.
 
         Args:
-            subtitle_manager: Subtitle manager instance
+            subtitle_repository: Subtitle repository instance
             logger: Logger instance
 
         Returns:
             Self for method chaining
         """
-        self._handlers.append(PersistenceHandler(subtitle_manager, logger))
+        self._handlers.append(PersistenceHandler(subtitle_repository, logger))
         return self
 
     def add_logging(

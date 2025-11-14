@@ -3,7 +3,7 @@
 import logging
 from typing import Optional
 
-from config.constants import AppConstants
+from common.config.constants import AppConstants
 
 
 class LoggerUtils:
